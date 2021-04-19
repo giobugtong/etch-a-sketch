@@ -1,3 +1,8 @@
+h1{
+    font-family: Helvetica, Arial,sans-serif;
+    text-align: center;
+}
+
 #grid-container{
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -10,5 +15,4 @@
 
 .grid-item{
     border: 1px solid black;
-    text-align: center;
 }
