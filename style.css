@@ -1,0 +1,12 @@
+#grid-container{
+    display: grid;
+    grid-template-columns: repeat(16, 30px);
+    grid-template-rows: repeat(16, 30px);
+    grid-gap: 1px;
+}
+
+
+.grid-item{
+    border: 1px solid black;
+    text-align: center;
+}
