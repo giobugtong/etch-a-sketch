@@ -1,11 +1,14 @@
 const gridContainer = document.querySelector("#grid-container");
-//const gridItems = document.querySelectorAll("#grid-container div");
 const btnNew = document.querySelector("#btn-new");
 const btnClear = document.querySelector("#btn-clear");
+const btnDark = document.querySelector("#btn-dark");
 
 window.addEventListener("load", defaultGrid());
 btnNew.addEventListener("click", newGrid);
 btnClear.addEventListener("click", removeColor);
+btnDark.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
 
 function defaultGrid() {
     setGridSize(16);
@@ -30,9 +33,9 @@ function addHover(e) {
     const randG = Math.floor(Math.random() * 256);
     const randB = Math.floor(Math.random() * 256);
     if (randR % 25 == 0 || randG % 25 == 0 || randB % 25 == 0) {
-            e.target.style.cssText = `background-color: black`;
+            e.target.style.cssText = `background-color: black; transition: .2s`;
         } else {
-            e.target.style.cssText = `background-color: rgb(${randR}, ${randG}, ${randB})`;
+            e.target.style.cssText = `background-color: rgb(${randR}, ${randG}, ${randB}); transition: .2s`;
         }
 }
  
@@ -59,9 +62,10 @@ function clearGrid() {
        gridContainer.removeChild(element);
    })
  }
- function removeColor() {
+
+function removeColor() {
     const gridArray = Array.from(gridContainer.childNodes);
-   gridArray.forEach((e) => {
-       e.style.cssText = "background-color: white;"
-   })
- }
+gridArray.forEach((e) => {
+    e.style.cssText = "background-color: white;"
+    });
+}
