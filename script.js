@@ -1,56 +1,67 @@
 const gridContainer = document.querySelector("#grid-container");
-function createGrid(rows, columns) {
-    gridContainer.style.cssText = `grid-template-rows: repeat(${rows}, 1fr); grid-template-columns: repeat(${columns}, 1fr);`;
-    for (let i = 0; i < rows * columns; i++) {
-        gridContainer.innerHTML += '<div class="grid-item"></div>';
+//const gridItems = document.querySelectorAll("#grid-container div");
+const btnNew = document.querySelector("#btn-new");
+const btnClear = document.querySelector("#btn-clear");
+
+window.addEventListener("load", defaultGrid());
+btnNew.addEventListener("click", newGrid);
+btnClear.addEventListener("click", removeColor);
+
+function defaultGrid() {
+    setGridSize(16);
+    createGrid(16);
+}
+
+function setGridSize(size) {
+    gridContainer.style.cssText = `grid-template-columns: repeat(${size}, 1fr);`;
+}
+
+function createGrid(grids) {
+    for (let i = 0; i < grids * grids; i++) {
+        const gridElement = document.createElement("div");
+        gridElement.classList = "grid-item";
+        gridElement.addEventListener("mouseover", addHover);
+        gridContainer.appendChild(gridElement);
     }
   }
-createGrid(16, 16);
 
-const gridItems = document.querySelectorAll("#grid-container div");
-function addHover(){
-    for (let i = 0; i < gridItems.length; i++) {
-        gridItems[i].addEventListener("mouseenter", function(){
-            this.style.backgroundColor = "rgb(65, 65, 65)";
-        });
-    }
+function addHover(e) {
+    const randR = Math.floor(Math.random() * 256);
+    const randG = Math.floor(Math.random() * 256);
+    const randB = Math.floor(Math.random() * 256);
+    if (randR % 25 == 0 || randG % 25 == 0 || randB % 25 == 0) {
+            e.target.style.cssText = `background-color: black`;
+        } else {
+            e.target.style.cssText = `background-color: rgb(${randR}, ${randG}, ${randB})`;
+        }
 }
-addHover()
-
-const btnNew = document.querySelector("#btn-new");
-btnNew.addEventListener("click", newGrid);
-
+ 
 function newGrid() {
-    let gridItems = document.querySelectorAll("#grid-container div");
-    let newGrid = prompt("Enter new grid size:", ""); 
-    if (newGrid > 100) {
-        return alert("Grid is too big!");
-    } else if (newGrid == null) {
-        return;
+    let newSize = prompt("Enter new grid size:"); 
+    if (newSize !== null) {
+        newSize = parseInt(newSize);
+        if (newSize == 69) {
+            alert("nice");
+        } else if (newSize < 1 || newSize > 64 || Number.isNaN(newSize)) {
+            alert("Please enter a number from 1-64.");
+            newGrid();
+        } else {
+            clearGrid();
+            setGridSize(newSize);
+            createGrid(newSize);
+        }
     }
-
-    // console.log(newGrid);
-    // console.log(typeof parseInt(newGrid));
-
-    for (let i = 0; i < gridItems.length; i++) {
-        gridContainer.removeChild(gridItems[i]);
 }
-createGrid(newGrid, newGrid);
-    for (let i = 0; i < gridItems.length; i++) {
-        gridItems[i].setAttribute("style", "background-color: none;");
- }
-    for (let i = 0; i < gridItems.length; i++) {
-    gridItems[i].addEventListener("mouseenter", function(){
-        this.style.backgroundColor = "rgb(65, 65, 65)";
-    });
-}
-}
-
-const btnClear = document.querySelector("#btn-clear");
-btnClear.addEventListener("click", clearGrid);
 
 function clearGrid() {
-    for (let i = 0; i < gridItems.length; i++) {
-        gridItems[i].setAttribute("style", "background-color: none;");
+   const gridArray = Array.from(gridContainer.childNodes);
+   gridArray.forEach((element) => {
+       gridContainer.removeChild(element);
+   })
  }
-}
+ function removeColor() {
+    const gridArray = Array.from(gridContainer.childNodes);
+   gridArray.forEach((e) => {
+       e.style.cssText = "background-color: white;"
+   })
+ }
