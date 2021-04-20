@@ -66,6 +66,6 @@ function clearGrid() {
 function removeColor() {
     const gridArray = Array.from(gridContainer.childNodes);
 gridArray.forEach((e) => {
-    e.style.cssText = "background-color: white;"
+    e.style.cssText = "background-color: white; transition: .2s"
     });
 }
