@@ -1,8 +1,9 @@
 html{
-    font-family: Helvetica, Arial,sans-serif
+    font-family: Helvetica, Arial,sans-serif;
 }
 h1{
     text-align: center;
+    margin: auto;
 }
 #options-container{
     display: flex;
@@ -11,11 +12,12 @@ h1{
 button{
     outline: none;
     border: 2px solid #313131;
-    font-size: 1.3git sem;
+    font-size: 1.2em;
     background-color: rgb(255, 255, 255);
-    padding: 5px 10px 5px 10px;
+    width: 97px;
+    height: 36px;
     display: block;
-    margin: 1rem;
+    margin: .7rem;
 }
 button:hover{
     cursor: pointer;
@@ -30,8 +32,10 @@ button:hover{
     height: 600px;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid black;
 }
 
 .grid-item{
     border: 1px solid black;
+    background-color: white;
 }
