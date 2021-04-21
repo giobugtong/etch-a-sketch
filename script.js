@@ -2,6 +2,8 @@ const gridContainer = document.querySelector("#grid-container");
 const btnNew = document.querySelector("#btn-new");
 const btnClear = document.querySelector("#btn-clear");
 const btnDark = document.querySelector("#btn-dark");
+const btnGray = document.querySelector("#btn-gray");
+const btnRandom = document.querySelector("#btn-random");
 
 window.addEventListener("load", defaultGrid());
 btnNew.addEventListener("click", newGrid);
@@ -9,6 +11,8 @@ btnClear.addEventListener("click", removeColor);
 btnDark.addEventListener("click", () => {
     document.body.classList.toggle("dark");
 });
+btnGray.addEventListener("click", grayEtch);
+btnRandom.addEventListener("click", randEtch);
 
 function defaultGrid() {
     setGridSize(16);
@@ -23,12 +27,12 @@ function createGrid(grids) {
     for (let i = 0; i < grids * grids; i++) {
         const gridElement = document.createElement("div");
         gridElement.classList = "grid-item";
-        gridElement.addEventListener("mouseover", addHover);
+        gridElement.addEventListener("mouseover", randColor);
         gridContainer.appendChild(gridElement);
     }
   }
 
-function addHover(e) {
+function randColor(e) {
     const randR = Math.floor(Math.random() * 256);
     const randG = Math.floor(Math.random() * 256);
     const randB = Math.floor(Math.random() * 256);
@@ -38,7 +42,11 @@ function addHover(e) {
             e.target.style.cssText = `background-color: rgb(${randR}, ${randG}, ${randB}); transition: .2s`;
         }
 }
- 
+
+function grayColor(e) {
+    e.target.style.cssText = "background-color: gray; transition: .2s";
+}
+
 function newGrid() {
     let newSize = prompt("Enter new grid size:"); 
     if (newSize !== null) {
@@ -68,4 +76,15 @@ function removeColor() {
 gridArray.forEach((e) => {
     e.style.cssText = "background-color: white; transition: .2s"
     });
+}
+
+function grayEtch() {
+    const gridArray = Array.from(gridContainer.childNodes);
+    gridArray.forEach((e) => e.removeEventListener("mouseover", randColor));
+    gridArray.forEach((e) => e.addEventListener("mouseover", grayColor));
+}
+function randEtch() {
+    const gridArray = Array.from(gridContainer.childNodes);
+    gridArray.forEach((e) => e.removeEventListener("mouseover", grayColor));
+    gridArray.forEach((e) => e.addEventListener("mouseover", randColor));
 }
