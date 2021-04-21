@@ -8,9 +8,10 @@ const btnRandom = document.querySelector("#btn-random");
 window.addEventListener("load", defaultGrid());
 btnNew.addEventListener("click", newGrid);
 btnClear.addEventListener("click", removeColor);
-btnDark.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-});
+btnDark.addEventListener("click", darkMode);
+// btnDark.addEventListener("click", () => {
+//     document.body.classList.toggle("dark");
+// });
 btnGray.addEventListener("click", grayEtch);
 btnRandom.addEventListener("click", randEtch);
 
@@ -76,6 +77,18 @@ function removeColor() {
 gridArray.forEach((e) => {
     e.style.cssText = "background-color: white; transition: .2s"
     });
+}
+
+function darkMode() {
+    if (btnDark.textContent === "dark mode") {
+    document.body.style.cssText = "color: rgb(255, 252, 228); background-color: rgb(31, 30, 41); transition: background 0.2s linear;"
+    //btnDark.style.cssText = "color: rgb(255, 252, 228); background-color: rgb(31, 30, 41); transition: background 0.2s linear;"
+    btnDark.textContent = "light mode";
+    } else if (btnDark.textContent === "light mode") {
+    document.body.style.cssText = "background-color: rgb(255, 252, 228); color: rgb(31, 30, 41); transition: background 0.2s linear;"
+    //btnDark.style.cssText = "background-color: rgb(255, 255, 255); color: rgb(31, 30, 41); transition: background 0.2s linear;"
+    btnDark.textContent = "dark mode";
+    }
 }
 
 function grayEtch() {

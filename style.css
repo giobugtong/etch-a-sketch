@@ -1,6 +1,7 @@
 html{
     font-family: Helvetica, Arial,sans-serif;
 }
+body{background-color: rgb(255, 252, 228);}
 h1{
     text-align: center;
     margin: auto;
@@ -47,5 +48,10 @@ button:hover{
 .dark{
     color: rgb(255, 252, 228);
     background-color: rgb(31, 30, 41);
+    transition: background 0.2s linear;
+}
+.light {
+    background-color: rgb(255, 255, 255);
+    color: rgb(31, 30, 41);
     transition: background 0.2s linear;
 }
