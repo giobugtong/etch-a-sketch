@@ -30,6 +30,8 @@ button:hover{
     background-color: rgb(31, 30, 41);
     color:rgb(255, 252, 228);
 }
+#btn-gray:hover{background-color: rgb(161, 161, 161);}
+#btn-random:hover{background-color: rgb(102, 255, 115);}
 #grid-container{
     display: grid;
     max-width: 600px;
