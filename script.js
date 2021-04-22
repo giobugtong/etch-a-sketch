@@ -4,6 +4,8 @@ const btnClear = document.querySelector("#btn-clear");
 const btnDark = document.querySelector("#btn-dark");
 const btnGray = document.querySelector("#btn-gray");
 const btnRandom = document.querySelector("#btn-random");
+const imgGit = document.querySelector("#git-img");
+const imgGitDark = document.querySelector("#git-img-dark");
 
 window.addEventListener("load", defaultGrid());
 btnNew.addEventListener("click", newGrid);
@@ -18,6 +20,7 @@ btnRandom.addEventListener("click", randEtch);
 function defaultGrid() {
     setGridSize(16);
     createGrid(16);
+    imgGitDark.style.cssText = "display: none"
 }
 
 function setGridSize(size) {
@@ -82,11 +85,13 @@ gridArray.forEach((e) => {
 function darkMode() {
     if (btnDark.textContent === "dark mode") {
     document.body.style.cssText = "color: rgb(255, 252, 228); background-color: rgb(31, 30, 41); transition: background 0.2s linear;"
-    //btnDark.style.cssText = "color: rgb(255, 252, 228); background-color: rgb(31, 30, 41); transition: background 0.2s linear;"
+    imgGit.style.cssText = "display: none"
+    imgGitDark.style.cssText = "display: block"
     btnDark.textContent = "light mode";
     } else if (btnDark.textContent === "light mode") {
     document.body.style.cssText = "background-color: rgb(255, 252, 228); color: rgb(31, 30, 41); transition: background 0.2s linear;"
-    //btnDark.style.cssText = "background-color: rgb(255, 255, 255); color: rgb(31, 30, 41); transition: background 0.2s linear;"
+    imgGitDark.style.cssText = "display: none"
+    imgGit.style.cssText = "display: block"
     btnDark.textContent = "dark mode";
     }
 }

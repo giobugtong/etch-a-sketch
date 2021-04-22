@@ -55,3 +55,17 @@ button:hover{
     color: rgb(31, 30, 41);
     transition: background 0.2s linear;
 }
+#git-img-dark{
+    height: 1.8rem;
+    position: fixed;
+    top: 9px;
+    left: 11px;
+    transition: .2s;
+}
+#git-img{
+    height: 1rem;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    transition: .2s;
+}
