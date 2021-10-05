@@ -1,7 +1,10 @@
 html{
     font-family: Helvetica, Arial,sans-serif;
 }
-body{background-color: rgb(255, 252, 228);}
+body{
+    background-color: rgb(255, 252, 228);
+    min-width: 620px;
+}
 h1{
     text-align: center;
     margin: auto;
@@ -9,6 +12,7 @@ h1{
 #options-container{
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
 }
 button{
     outline: none;
